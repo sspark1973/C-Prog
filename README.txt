@@ -1,5 +1,7 @@
 It's for C Programming.
 
+gcc -o arg_va arg_va.c
+
 SetUp Environment :
 	https://github.com/
 		https://help.github.com/articles/set-up-git - Install GitHub for Windows
