@@ -1,3 +1,5 @@
+#include "type_def.h"
+
 void mem_cpy(void *target, void *source, uint32 size)
 {
   uint32 i;
