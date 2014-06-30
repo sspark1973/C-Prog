@@ -12,3 +12,8 @@ void mem_cpy(void *target, void *source, uint32 size)
   
   return;
 }
+
+int main(void)
+{
+  return 0;
+}
