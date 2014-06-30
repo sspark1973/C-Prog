@@ -5,6 +5,7 @@ gcc -o arg_va arg_va.c
 /* If the headers are located in some other (non-standard) location you would include like standard headers:
 use the -I (uppercase i ) flag to include the directory containing them. */
 gcc -I/path/to/directory/containing/header_name -o myoutputfile myoutputfile.c
+gcc -include /path/to/directory/containing/header_name/header_name.h -o myoutputfile myoutputfile.c
 
 SetUp Environment :
 	https://github.com/
