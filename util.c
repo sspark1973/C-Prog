@@ -25,6 +25,25 @@ void mem_set(void *target, uint8 value, uint32 size)
   return;
 }
 
+/* return : 
+      0 : if strings are same
+      1 : if strings are different
+*/
+uint32 string_n_cmp(char *str1, char *str2, uint32 len)
+{
+  uint32 i;
+  uint32 result = 0;
+  
+  for(i=0; i < len; i++) {
+    if(str1[i] != str2[i]) {
+      result = 1;
+      break;
+    }
+  }
+  
+  return result;
+}
+
 int main(void)
 {
   return 0;
