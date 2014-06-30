@@ -13,6 +13,18 @@ void mem_cpy(void *target, void *source, uint32 size)
   return;
 }
 
+void mem_set(void *target, uint8 value, uint32 size)
+{
+  uint32 i;
+  uint8 *target_p = (uint8 *)target;
+  
+  for(i=0; i < size; i++, target_p++) {
+    *target_p = value;
+  }
+  
+  return;
+}
+
 int main(void)
 {
   return 0;
