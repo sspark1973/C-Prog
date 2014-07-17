@@ -28,7 +28,7 @@ bool8 isSubstring(char *str1, char *str2)
 
 bool8 isRotation(char *str1, char *str2)
 {
-  int str3[NO_OF_CHARS] = "";
+  char str3[NO_OF_CHARS] = "";
   int len = strlen(str1);
   
   if(len == strlen(str2) && len > 0) {
