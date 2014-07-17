@@ -19,6 +19,8 @@
 typedef int bool;
 #define false 0
 #define true 1
+
+typedef enum { false, true } bool;
 */
 
 //typedef enum {false, true} boolean;
@@ -52,6 +54,30 @@ bool8 areAnagram(char *str1, char *str2)
   return TRUE;
 }
 
+/* The above implementation can be further to use only one count array instead of two. 
+   We can increment the value in count array for characters in str1 and decrement for characters in str2. 
+   Finally, if all count values are 0, then the two strings are anagram of each other. 
+*/
+bool8 areAnagramAdvance(char *str1, char *str2)
+{
+  int count[NO_OF_CHARS] = {0};
+  int i;
+  
+  for(i=0; str1[i] & str2[i]; i++)
+  {
+    count[str1[i]]++;
+    count[str2[i]]--;
+  }
+  
+  if(str1[i] | str2[i])
+    return FALSE;
+    
+  for(i=0; i < NO_OF_CHARS; i++)
+    if(count[i])
+      return FALSE;
+  
+  return TRUE:
+}
 
 int main()
 {
@@ -59,9 +85,15 @@ int main()
   char str2[] = "forgeeksgeeks";
   
   if(areAnagram(str1, str2))
-    printf("The two strings are anagram of each other");
+    printf("The two strings are anagram of each other\n");
   else
-    printf("The two strings are not anagram of each other");
+    printf("The two strings are not anagram of each other\n");
+
+
+  if(areAnagramAdvance(str1, str2))
+    printf("The two strings are anagram of each other\n");
+  else
+    printf("The two strings are not anagram of each other\n");
     
   return 0;
 }
