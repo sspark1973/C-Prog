@@ -32,7 +32,7 @@ bool8 isUniqueChar(char *str)
   We will assume, in the below code, that the string is only lower case ‘a’ through ‘z’. 
   This will allow us to use just a single int
 */
-bool8 isUniqueCharBV(char *str)
+bool8 isUniqueCharVB(char *str)
 {
   int checker = 0, i, val;
   
