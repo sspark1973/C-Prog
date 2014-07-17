@@ -35,9 +35,11 @@ bool8 isRotation(char *str1, char *str2)
     strcat(str3, str2);
     strcat(str3, str2);
     printf("str3 %s\n", str3);
+    
+    return isSubstring(str3, str1);
   }
   
-  return isSubstring(str3, str1);
+  return FALSE;
 }
 
 int main()
