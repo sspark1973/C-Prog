@@ -76,7 +76,7 @@ bool8 areAnagramAdvance(char *str1, char *str2)
     if(count[i])
       return FALSE;
   
-  return TRUE:
+  return TRUE;
 }
 
 int main()
