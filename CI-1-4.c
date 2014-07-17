@@ -97,3 +97,12 @@ int main()
     
   return 0;
 }
+
+
+/*
+If the possible set of characters contains only English alphabets, 
+then we can reduce the size of arrays to 52 and use str[i] – ‘A’ as an index for count arrays. 
+This will further optimize this method.
+
+Time Complexity: O(n)
+*/
