@@ -12,6 +12,10 @@
 #include <stdio.h>
 
 #define NO_OF_CHARS 256
+#define false 0
+#define true 1
+
+//typedef enum {false, true} boolean;
 
 /* function to check whether two strings are anagram of each other */
 bool areAnagram(char *str1, char *str2)
