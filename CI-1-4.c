@@ -10,15 +10,21 @@
   3) Compare count arrays. If both count arrays are same, then return true.
 */
 #include <stdio.h>
+#include "type_def.h"
 
 #define NO_OF_CHARS 256
+
+
+/*
+typedef int bool;
 #define false 0
 #define true 1
+*/
 
 //typedef enum {false, true} boolean;
 
 /* function to check whether two strings are anagram of each other */
-bool areAnagram(char *str1, char *str2)
+bool8 areAnagram(char *str1, char *str2)
 {
   // Create two count arrays and initialize all values as 0
   int count1[NO_OF_CHARS] = {0};
@@ -36,14 +42,14 @@ bool areAnagram(char *str1, char *str2)
   // If both strings are of different length. Removing this condition
   // will make the program fail for strings like "aaca" and "aca"
   if(str1[i] || str2[i])
-    return false;
+    return FALSE;
     
   // Compare count arrays
   for(i=0; i < NO_OF_CHARS; i++)
     if(count1[i] != count2[i])
-      return false;
+      return FALSE;
       
-  return true;
+  return TRUE;
 }
 
 
