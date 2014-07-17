@@ -28,10 +28,31 @@ bool8 isUniqueChar(char *str)
   return TRUE;
 }
 
+/* We can reduce our space usage a little bit by using a bit vector. 
+  We will assume, in the below code, that the string is only lower case ‘a’ through ‘z’. 
+  This will allow us to use just a single int
+*/
+bool8 isUniqueCharBV(char *str)
+{
+  int checker = 0, i, val;
+  
+  for(i=0; i < strlen(str); i++) {
+    val = str[i] - 'a';
+    if((checker & (1 << val)) > 0 ) return FALSE;
+    checker |= (1 << val);
+  }
+  
+  return TRUE;
+}
+
 main()
 {
   char *str = "abcdef";
+  char *str2 = "abcdefd";
   
   printf("Is %s Unique string : %d\n", str, isUniqueChar(str));
+  printf("Is %s Unique string : %d\n", str, isUniqueCharVB(str));
+  printf("Is %s Unique string : %d\n", str, isUniqueChar(str2));
+  printf("Is %s Unique string : %d\n", str, isUniqueCharVB(str2));
 }
 
