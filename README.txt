@@ -14,6 +14,10 @@ SetUp Environment :
 		You must add C:\MinGW\bin; to your user PATH environment variable manually. 
 		You can permanently add C:\MinGW\bin; to your PATH by following the 
 		instructions in the "Environment Settings" section on the MinGW Getting Started page.
+		
+	Windows Eclipse
+		installing 64 bit JVM from http://www.java.com/en/download/manual.jsp
+		http://eclipse.org/egit/download/ - Eclipse Download
 
 /* create a new branch named "feature_x" and switch to it using *
 git checkout -b feature_x
