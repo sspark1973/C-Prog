@@ -14,22 +14,42 @@ input: s1 = apple, s2 = ppale ==> apple is not a substring of ppaleppale
 
 #include <stdio.h>
 #include <string.h>
+#include "type_def.h"
 
 #define NO_OF_CHARS 80
+
+bool8 isSubstring(char *str1, char *str2)
+{
+  if(strstr(str1, str2) != NULL)
+    return TRUE;
+  
+  return FALSE;
+}
+
+bool8 isRotation(char *str1, char *str2)
+{
+  int str3[NO_OF_CHARS] = "";
+  int len = strlen(str1);
+  
+  if(len == strlen(str2) && len > 0) {
+    strcat(str3, str2);
+    strcat(str3, str2);
+    printf("str3 %s\n", str3);
+  }
+  
+  return isSubstring(str3, str1);
+}
 
 int main()
 {
   char str1[] = "apple";
   char str2[] = "pleap";
-  char str3[NO_OF_CHARS] = "";
-  char *pch;
   
-  strcat(str3, str2);
-  strcat(str3, str2);
+  bool8 isRot;
   
-  pch = strstr(str3, str1);
+  isRot = isRotation(str1, str2);
   
-  printf("pch: %s\n", pch);
+  printf("isRot : %d\n", isRot);
   
   return 0;
 }
