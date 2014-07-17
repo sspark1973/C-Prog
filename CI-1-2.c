@@ -22,8 +22,11 @@ void reverse(char *str)
   
     while(str < end) {
       tmp = *str;
-      *str++ = *end;
-      *end-- = tmp;
+      *str = *end;
+      *end = tmp;
+      ++str;
+      --end;
+      
     }
   }
 }
