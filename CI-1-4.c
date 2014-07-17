@@ -50,7 +50,7 @@ bool areAnagram(char *str1, char *str2)
 int main()
 {
   char str1[] = "geeksforgeeks";
-  char str2[] = "forgeeksgeeks;
+  char str2[] = "forgeeksgeeks";
   
   if(areAnagram(str1, str2))
     printf("The two strings are anagram of each other");
