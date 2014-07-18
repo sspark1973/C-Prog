@@ -8,7 +8,7 @@ Write code to reverse a C-Style String.
 This is a classic interview question. 
 The only “gotcha” is to try to do it in place, and to be careful for the null character.
 */
-void reverse(char *str)
+char *reverse(char *str)
 {
   char *end = str;
   char tmp;
@@ -29,6 +29,8 @@ void reverse(char *str)
       
     }
   }
+  
+  return str;
 }
   
 
@@ -37,7 +39,5 @@ main()
 {
   char *str = "gotcha";
   
-  printf("%s \n", str);
-  reverse(str);
-  printf("reverse %s\n", str);
+  printf("%s -> %s\n", str, reverse(str));
 }
