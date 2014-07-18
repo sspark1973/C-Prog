@@ -21,12 +21,12 @@ char *reverse(char *str)
       src = str;
       dst = src + len - 1;
     
-      while(str < end) {
-        tmp = *str;
-        *str = *end;
-        *end = tmp;
-        ++str;
-        --end;
+      while(src < dst) {
+        tmp = *src;
+        *src = *dst;
+        *dst = tmp;
+        ++src;
+        --dst;
       }
     }
   }
