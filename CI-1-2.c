@@ -4,6 +4,7 @@ Write code to reverse a C-Style String.
 */
 
 #include <stdio.h>
+#include <string.h>
 /*
 This is a classic interview question. 
 The only “gotcha” is to try to do it in place, and to be careful for the null character.
