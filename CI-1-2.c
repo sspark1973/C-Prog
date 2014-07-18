@@ -44,6 +44,6 @@ main()
   
   for (i=0; i < sizeof(str)/sizeof(str[0]); i++) {
     strcpy(s, str[i]);
-    printf("%s -> %s\n", str, reverse(s));
+    printf("%s -> %s\n", s, reverse(s));
   }
 }
