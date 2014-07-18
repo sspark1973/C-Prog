@@ -10,34 +10,39 @@ The only “gotcha” is to try to do it in place, and to be careful for the nul
 */
 char *reverse(char *str)
 {
-  char *end = str;
+  char *src, *dst;
   char tmp;
+  int len;
   
   if(str) {
-    while(*end) {
-      ++end;
-    }
-
-    --end;
-  
-    while(str < end) {
-      tmp = *str;
-      *str = *end;
-      *end = tmp;
-      ++str;
-      --end;
-      
+    len = strlen(str);
+    
+    if(len > 1) {
+      src = str;
+      dst = src + len - 1;
+    
+      while(str < end) {
+        tmp = *str;
+        *str = *end;
+        *end = tmp;
+        ++str;
+        --end;
+      }
     }
   }
   
   return str;
 }
-  
 
+char *str[] = {"", "a", "ab", "abc", "adbcd"};
 
 main()
 {
-  char *str = "gotcha";
+  int i;
+  char s[256];
   
-  printf("%s -> %s\n", str, reverse(str));
+  for (i=0; i < sizeof(str)/sizeof(str[0]); i++) {
+    strcpy(s, str[i]);
+    printf("%s -> %s\n", str, reverse(s));
+  }
 }
