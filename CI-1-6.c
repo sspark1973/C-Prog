@@ -33,18 +33,18 @@ void rotate(int matrix[][5], int n){
 
 		for(i = first; i < last; i++) {
 			int offset = i - first;
-			int top = matrix[first][i]; // save top
-			//left -> top
+			int top = matrix[first][i]; // save LeftTop
+			//LeftBottom -> LeftTop
 			matrix[first][i] = matrix[last-offset][first];
 
-			//bottom -> left
+			//RightBottom -> LeftBottom
 			matrix[last-offset][first] = matrix[last][last-offset];
 
-			// right -> bottom
+			// RightTop -> RightBottom
 			matrix[last][last-offset] = matrix[i][last];
 
-			// top -> right
-			matrix[i][last] = top; // right <-saved top
+			// LeftTop -> RightTop
+			matrix[i][last] = top; // RightTop <-saved LeftTop
 		}
 	}
 
