@@ -12,6 +12,7 @@ We rotate the edges by doing a four-way swap first on the corners, then on the e
 Once the exterior elements are rotated, we then rotate the interior region’s edges.
 */
 #include <stdio.h>
+#include <stdlib.h>
 
 void display(int (*matrix)[5], int n) {
 	int i, j;
@@ -50,12 +51,52 @@ void rotate(int matrix[][5], int n){
 
 }
 
+void setZeros(int matrix[][5], int rn, int cn) {
+	int row[5] = {0};
+	int col[5] = {0};
+	int i, j;
+	//int *row, *col;
+
+	//row = (int *)malloc(rn);
+	//col = (int *)malloc(cn);
+
+	for(i=0; i < rn; i++) {
+		for(j=0; j < cn; j++) {
+			if(matrix[rn][cn] == 0) {
+				row[i] = 1;
+				col[j] = 1;
+			}
+		}
+	}
+
+	for(i=0; i<rn; i++)
+		printf("%d\t", row[i]);
+	printf("\n=====================================\n");
+	for(i=0; i<cn; i++)
+		printf("%d\t", col[i]);
+	printf("\n=====================================\n");
+	
+
+	for(i=0; i < rn; i++) {
+		for(j=0; j < cn; j++) {
+			if( (row[i] == 1 || col[j] == 1) ) {
+				matrix[i][j] = 0;
+			}
+		}
+	}
+
+	//free(row);
+	//free(col);
+}
+
 int main(int argc, char **argv)
 {
-	int matrix[5][5] = { {1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
+	int matrix[5][5] = { {1,2,0,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
 
 	display(matrix, 5);
 	rotate(matrix, 5);
+	display(matrix, 5);
+	setZeros(matrix, 5, 5);
 	display(matrix, 5);
 
 	return 0;
