@@ -14,7 +14,7 @@ Once the exterior elements are rotated, we then rotate the interior region’s edg
 #include <stdio.h>
 #include <stdlib.h>
 
-void display(int (*matrix)[5], int n) {
+void display(int matrix[][5], int n) {
 	int i, j;
 	for(i = 0; i < n; i++) {
 		for(j = 0; j < n; j++) {
@@ -26,7 +26,31 @@ void display(int (*matrix)[5], int n) {
 }
 
 void rotate(int matrix[][5], int n){
-	int layer, i;
+	int layer, i, j, rn=n, cn=n;
+	int row[5] = {0};
+	int col[5] = {0};
+
+	printf("\n=====================================\n");
+
+	for(i=0; i < rn; i++) {
+		for(j=0; j < cn; j++) {
+			printf("[%d][%d]=%d\t", i, j, matrix[i][j]);
+			if(matrix[i][j] == 0) {
+				row[i] = 1;
+				col[j] = 1;
+			}
+		}
+		printf("\n");
+	}
+	printf("\n=====================================\n");
+
+	for(i=0; i<rn; i++)
+		printf("%d\t", row[i]);
+	printf("\n=====================================\n");
+	for(i=0; i<cn; i++)
+		printf("%d\t", col[i]);
+	printf("\n=====================================\n");
+
 
 	for (layer=0; layer < n/2; layer++) {
 		int first = layer;
@@ -48,6 +72,23 @@ void rotate(int matrix[][5], int n){
 			matrix[i][last] = top; // RightTop <-saved LeftTop
 		}
 	}
+
+	for(i=0; i < rn; i++) {
+		for(j=0; j < cn; j++) {
+			if(matrix[rn][cn] == 0) {
+				row[i] = 1;
+				col[j] = 1;
+			}
+		}
+	}
+
+	for(i=0; i<rn; i++)
+		printf("%d\t", row[i]);
+	printf("\n=====================================\n");
+	for(i=0; i<cn; i++)
+		printf("%d\t", col[i]);
+	printf("\n=====================================\n");
+
 
 }
 
@@ -91,7 +132,7 @@ void setZeros(int matrix[][5], int rn, int cn) {
 
 int main(int argc, char **argv)
 {
-	int matrix[5][5] = { {1,2,0,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
+	int matrix[][5] = { {1,2,0,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
 
 	display(matrix, 5);
 	rotate(matrix, 5);

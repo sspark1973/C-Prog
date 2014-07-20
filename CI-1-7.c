@@ -22,15 +22,17 @@ We then make a second pass of the matrix and set a cell to zero if its row or co
 #include <stdio.h>
 #include <stdlib.h>
 
+int matrix[5][5] = { {1,2,0,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
+
 #define ROW 5
 #define COL 5
 
-void display(int (*matrix)[5], int rn, int cn) {
+void display(int rn, int cn) {
 	int i, j;
 
 	for(i=0; i < rn; i++) {
 		for(j=0; j < cn; j++) {
-			printf("%d\t", matrix[rn][cn]);
+			printf("%d\t", matrix[i][j]);
 		}
 		printf("\n");
 	}
@@ -38,20 +40,20 @@ void display(int (*matrix)[5], int rn, int cn) {
 	printf("--------------------------------\n");
 }
 	
-void setZeros(int matrix[][5], int rn, int cn) {
-	//int row[ROW] = {0};
-	//int col[COL] = {0};
+void setZeros(int rn, int cn) {
+	int row[ROW] = {0};
+	int col[COL] = {0};
 	int i, j;
-	int *row, *col;
+	//int *row, *col;
 
-	row = (int *)malloc(rn);
-	col = (int *)malloc(cn);
+	//row = (int *)malloc(rn);
+	//col = (int *)malloc(cn);
 
 	for(i=0; i < rn; i++) {
 		for(j=0; j < cn; j++) {
-			if(matrix[rn][cn] == 2293457) {
+			if(matrix[i][j] == 0) {
 				row[i] = 1;
-				col[i] = 1;
+				col[j] = 1;
 			}
 		}
 	}
@@ -68,9 +70,8 @@ void setZeros(int matrix[][5], int rn, int cn) {
 
 int main(int argc, char **argv) {
 
-	int matrix[5][5] = { {1,2,0,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25} };
-	display(matrix, 5, 5);
-	setZeros(matrix, 5, 5);
-	display(matrix, 5, 5);
+	display(5, 5);
+	setZeros(5, 5);
+	display(5, 5);
 	return 0;
 }
