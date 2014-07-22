@@ -74,14 +74,7 @@ int main(int argc, char *argv)
 	printList(head);
 	deleteNode(head);
 	printList(head);
-	deleteNode(head);
-	deleteNode(head);
-	deleteNode(head);
-	deleteNode(head);
-	printList(head);
-	deleteNode(head);
-	printList(head);
-
+	
 	return 0;
 }
 
