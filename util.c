@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <string.h>
+
 #include "type_def.h"
 #include "util.h"
 
@@ -123,6 +126,23 @@ uint32 string_n_cmp(char *str1, char *str2, uint32 len)
   return result;
 }
 
+char *string_concat(char *dst, char *src)
+{
+	char *fdst;
+	fdst = dst;
+
+	if(dst == '\0' || src == '\0')
+		return fdst;
+
+	while(*dst != '\0')
+		dst++;
+
+	while(*src != '\0')
+		*dst++ = *src++;
+
+	return fdst;
+}
+
 uint32 string_len(char *input)
 {
   uint32 len = 0;
@@ -141,5 +161,10 @@ uint32 string_len(char *input)
 
 int main(void)
 {
-  return 0;
+	char dest[10] = "one";
+	char src[10] = "two";
+
+	printf("%s\t\n", string_concat(dest, src));
+	
+	return 0;
 }
