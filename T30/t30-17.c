@@ -9,7 +9,7 @@ int main()
 	FILE *fp1, *fp2;
 	char filename[40];
 	char c;
-	int del_line, temp=1;
+	int del_line, temp=1, flag = 0;
 
 	printf("Enter File Name :\n");
 	scanf("%s", &filename);
@@ -39,12 +39,18 @@ int main()
 		if(temp != del_line) {
 			putc(c, fp2);
 		} else {
+			while((c=getc(fp1)) != '\n') {
+			}
+			
 			printf("Enter new text:\n");
-			fflush(stdin);  //fflush(stdin)??? stdin????? ?? ??? ????.
+			fflush(stdin);
 			putc('\n', fp2);
 
 			while((c = getchar()) != '\n')
 				putc(c, fp2);
+
+			//fputs("\n", fp2);
+			putc('\n', fp2);
 			temp++;
 		}
 

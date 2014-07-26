@@ -43,7 +43,7 @@ int main(){
 	c = getc(fp1);
 
 	while (c != EOF){
-		c = getc(fp1);
+		//c = getc(fp1);
 		if (c =='\n')
 			temp++;
 		//except the line to be deleted
@@ -52,6 +52,7 @@ int main(){
 			//copy all lines in file copy.c
 			putc(c, fp2);
 		}
+		c = getc(fp1);
 	}
 
 	//close both the files.
