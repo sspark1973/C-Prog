@@ -27,7 +27,7 @@ int main(){
 	//until the last character of file is obtained
 	while (c != EOF)
 	{
-		printf("%c ", c);
+		printf("%c", c);
 		//print current character and read next character
 		c = getc(fp1);
 	}
@@ -66,7 +66,7 @@ int main(){
 	c = getc(fp1);
 
 	while (c != EOF){
-		printf("%c ", c);
+		printf("%c", c);
 		c = getc(fp1);
 	}
 
