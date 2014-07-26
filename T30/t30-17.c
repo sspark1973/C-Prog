@@ -40,7 +40,7 @@ int main()
 			putc(c, fp2);
 		} else {
 			printf("Enter new text:\n");
-			fflush(stdin);
+			fflush(stdin);  //fflush(stdin)??? stdin????? ?? ??? ????.
 			putc('\n', fp2);
 
 			while((c = getchar()) != '\n')
