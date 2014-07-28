@@ -32,6 +32,7 @@ void displayList(struct node *head)
 	while(temp != NULL) {
 		printf("%d\t", temp->data);
 		temp = temp->next;
+		getchar();
 	}
 
 	printf("\n");
@@ -92,9 +93,40 @@ int detectAndRemoveLoop(struct node *list)
 	return 0;
 }
 
+struct node *FindBeginning(struct node *head)
+{
+	struct node *n1 = head;
+	struct node *n2 = head;
+
+	while(n2->next != NULL) {
+		n1 = n1->next;
+		n2 = n2->next->next;
+
+		if(n1==n2) {
+			break;
+		}
+	}
+
+	if(n2->next == NULL)
+		return NULL;
+
+	n1 = head;
+
+	while(n1 != n2) {
+		n1 = n1->next;
+		n2 = n2->next;
+	}
+
+	
+
+	return n2;
+}
+
+	
 int main(int argc, char **argv)
 {
 	struct node *head = NULL;
+	struct node *node_ptr = NULL;
 
 	push(&head, 10);
 	push(&head, 4);
@@ -105,7 +137,13 @@ int main(int argc, char **argv)
 
 	displayList(head);
 
+	getchar();
+
 	head->next->next->next->next->next = head->next->next;
+
+	node_ptr = FindBeginning(head);
+
+	displayList(node_ptr);
 
 	detectAndRemoveLoop(head);
 
