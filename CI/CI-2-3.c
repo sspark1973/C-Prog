@@ -64,12 +64,12 @@ int main(int argc, char *argv)
 	struct node *head = NULL;
 
 	push(&head, 1);
-	push(&head, 4);
-	push(&head, 1);
-	push(&head, 12);
-	push(&head, 1);
-	push(&head, 10);
-	push(&head, 18);
+	//push(&head, 4);
+	//push(&head, 1);
+	//push(&head, 12);
+	//push(&head, 1);
+	//push(&head, 10);
+	//push(&head, 18);
 
 	printList(head);
 	deleteNode(head);
