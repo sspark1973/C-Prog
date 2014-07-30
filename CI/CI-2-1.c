@@ -5,7 +5,8 @@ How would you solve this problem if a temporary buffer is not allowed?
 */
 
 /*
-For example if the linked list is 12->11->12->21->41->43->21 then removeDuplicates() should convert the list to 12->11->21->41->43.
+For example if the linked list is 12->11->12->21->41->43->21 then removeDuplicates() 
+should convert the list to 12->11->21->41->43.
 
 METHOD 1 (Using two loops)
 This is the simple way where two loops are used. 

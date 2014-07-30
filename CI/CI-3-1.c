@@ -18,10 +18,14 @@ With these constraints, we are left with no other choice but to divide equally 1
 //#include <iostream>
 #include <stdbool.h>
 
-int stackSize = 300;
+#define SINGLE_STACK_SIZE 300
+
+const int stackSize = 300;
 int buffer_size = 900;
 //int* buf = new int[stackSize * 3];
-int buffer[900] = {0};
+int buffer[SINGLE_STACK_SIZE * 3];
+// int buffer[stackSize * 3]; - Compile Error
+
 int stackPointer[] = {-1, -1, -1};
 
 void push(int stackNum, int value) 
