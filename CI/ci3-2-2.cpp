@@ -26,9 +26,6 @@ public:
 
 void Stack::displayStack()
 {
-	cout << "Stack::displayStack" << endl;
-	cout << "Top : " << top << endl;
-	
 	int i;
 	
 	if(isEmpty() == true)
@@ -37,8 +34,7 @@ void Stack::displayStack()
 	for(i=0; i <= top; i++)
 		cout << arr[i] << "\t";
 
-	cout<< "" << endl;
-
+	cout<< endl;
 }
 
  
@@ -61,8 +57,6 @@ bool Stack::isFull()
 /* Stack's member method to remove an element from it */
 int Stack::pop()
 {
-	cout<< "Stack::pop" << endl;
-
 	if(isEmpty())
     {
         cout<<"Stack Underflow";
@@ -76,7 +70,6 @@ int Stack::pop()
 /* Stack's member method to insert an element to it */
 void Stack::push(int x)
 {
-	cout<< "Stack::push" << endl;
     if(isFull())
     {
         cout<< "Stack Overflow";
@@ -102,7 +95,10 @@ public:
 
 void SpecialStack::displayStack()
 {
+	cout << "Display Stack :" << endl;	
 	Stack::displayStack();
+	cout << "Display MIN Stack :" << endl;	
+	min.displayStack();
 
 }
 	
@@ -111,8 +107,6 @@ void SpecialStack::displayStack()
    values */
 void SpecialStack::push(int x)
 {
-	cout<< "SpecialStack::push" << endl;
-
     if(isEmpty()==true)
     {
         Stack::push(x);
@@ -134,8 +128,6 @@ void SpecialStack::push(int x)
    removes top element from min stack also. */
 int SpecialStack::pop()
 {
-	cout<< "SpecialStack::pop" << endl;
-
     int x = Stack::pop();
     min.pop();
     return x;
@@ -154,31 +146,26 @@ int main()
 {
     SpecialStack s;
 
-	cout<< "INPUT 40" << endl;
 	s.push(40);
-	s.displayStack();
-
-	cout<< "INPUT 30" << endl;
 	s.push(30);
+	s.push(50);
+	s.push(60);
+
 	s.displayStack();
 
+    cout << s.getMin() << endl;
 
-#if 0
-	cout<< "INPUT 20" << endl;
-    s.push(20);
-
-	cout<< "INPUT 30" << endl;
-
-    s.push(30);
-    cout<<s.getMin() << endl;
     s.push(5);
+
     cout<<s.getMin() << endl;
+
 	s.pop();
+	s.pop();
+
+	cout<<s.getMin() << endl;
+
 	s.pop();
 	cout<<s.getMin() << endl;
-	s.pop();
-	cout<<s.getMin() << endl;
-#endif
 
     return 0;
 }
