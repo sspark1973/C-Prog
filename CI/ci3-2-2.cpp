@@ -16,7 +16,11 @@ private:
     int arr[max];
     int top;
 public:
-    Stack() { top = -1; }
+    Stack()
+		:top(-1)
+	{ 
+		
+	}
     bool isEmpty();
     bool isFull();
     int pop();
@@ -24,7 +28,7 @@ public:
 	void displayStack();
 };
 
-void Stack::displayStack()
+ void Stack::displayStack()
 {
 	int i;
 	
