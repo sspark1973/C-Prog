@@ -48,7 +48,7 @@ int pop(struct sNode** top_ref)
 	struct sNode *top;
 
 	if(*top_ref == NULL) {
-		printf("Stack overflow \n");
+		printf("%s : Stack overflow \n", __FUNCTION__);
 		getchar();
 		exit(0);
 	} else {
@@ -65,7 +65,7 @@ void display(struct sNode *stack)
 	int i;
 
 	if(stack == NULL) {
-		printf("Stack is empty\n");
+		printf("%s : Stack is empty\n", __FUNCTION__);
 		getchar();
 		exit(0);
 	}	
@@ -81,7 +81,7 @@ void display(struct sNode *stack)
 int peek(struct sNode *stack)
 {
 	if(stack == NULL) {
-		printf("Stack is Empty\n");
+		printf("%s : Stack is Empty\n", __FUNCTION__);
 		return 0;
 	}
 
@@ -105,10 +105,12 @@ int main()
 
 	while(stack1) {
 		int tmp = pop(&stack1);
-		while(!stack2 && peek(stack1) > tmp) {
+
+		while(!stack2 && peek(stack2) > tmp) {
 			int tmp2 = pop(&stack2);
 			push(&stack1, tmp2);
 		}
+
 		push(&stack2, tmp);
 	}
 
