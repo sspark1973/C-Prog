@@ -18,13 +18,15 @@ Write a program to move the disks from the first rod to the last using Stacks
 #define FROM_TO_USE 1
 #define MAX_ELEMENTS 10
 
+#define NumOfStack 4
+
 typedef struct {
 	int A[MAX_ELEMENTS];
 	int top;
 	char name;
 } STACK;
 
-void initStack(STACK *S);
+void initStack(STACK *S, int n);
 int pop(STACK *S);
 void push(STACK *s, int x);
 void hanoi(int n, STACK* from, STACK *to, STACK *use);
@@ -48,7 +50,7 @@ int pop(STACK *S)
 
 void push(STACK *S, int x)
 {
-	if(S->top == MAX_ELEMENTS -1) {
+	if(S->top == NumOfStack - 1) {
 		printf("\n STACK overflow \n");
 		return;
 	}
@@ -68,21 +70,30 @@ void hanoi(int n, STACK* from, STACK *to, STACK *use)
 		return;
 	}
 
-	if(n > 0) {
+	if(n > 1) {
 		hanoi(n-1, from, use, to);
 		x = pop(from); push(to, x);
 		printStack(S1);printStack(S2);printStack(S3);printf("\n");
 		hanoi(n-1, use, to, from);
-
 	}
 }
 
-void initStack(STACK *S)
+void initStack(STACK *S, int n)
 {
 	int i;
 	S->top = -1;
-	for(i=0; i < MAX_ELEMENTS; i++)
-		S->A[i] = i + 1;
+	for(i=0; i < n; i++)
+		S->A[i] = 0;
+}
+
+void initStackN(STACK *S, int n)
+{
+	int i, value = n;
+	S->top = -1;
+	for(i=0; i < n; i++) {
+		(S->top)++;
+		S->A[i] = value--;
+	}
 }
 
 void printStack(STACK S)
@@ -92,7 +103,7 @@ void printStack(STACK S)
 	printf("%c : ", S.name);
 	
 	for(i = 0; i <= S.top; i++) {
-		printf("%d\t", S.A[i]);
+		printf("%d ", S.A[i]);
 	}
 
 	printf("\n");
@@ -100,16 +111,17 @@ void printStack(STACK S)
 
 int main(int argc, char **argv)
 {
-	int n = 3;
+	int n = NumOfStack;
 
 	S1.name = 'A';
 	S2.name = 'B';
 	S3.name = 'C';
 
-	initStack(&S1); printStack(S1);
-	initStack(&S1); printStack(S1);
-	initStack(&S1); printStack(S1);
+	initStackN(&S1, n);
+	initStack(&S2, n);
+	initStack(&S3, n);
 
+	printStack(S1);printStack(S2);printStack(S3);printf("\n");
 	hanoi(n, &S1, &S3, &S2);
 
 	getchar();
