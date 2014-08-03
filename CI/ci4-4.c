@@ -82,13 +82,15 @@ void printList(struct sll *head)
 
 	printf("%x\n", head);
 	
-	while(temp != NULL) {
+	while(head != NULL) {
 		//printf("%s 2 \n", __FUNCTION__);
-		printf("%d\t", temp->data);
-		temp = temp->next;
+		printf("%d\t", head->data);
+		head = head->next;
 	}
 	printf("\n");
 }
+
+//struct sll *node[10] = NULL;
 
 void push(struct sll **head_ref, int data)
 {
@@ -109,15 +111,19 @@ void push(struct sll **head_ref, int data)
 }		
 struct sll* printGivenLevel(struct node* root, int level)
 {
-	static struct sll *head = NULL;
+	static struct sll *head1 = NULL;
+	static struct sll *head2 = NULL;
+	static struct sll *head3 = NULL;
+
 
 	if(root == NULL)
-		return head;
+		return head1;
 
 	if(level == 1) {
 		//printf("%s data[%d]\n", __FUNCTION__, root->data); 
-		push(&head, root->data);
+		push(&head1, root->data);
 	} else if(level > 1) {
+		
 		printGivenLevel(root->left, level-1);
 		printGivenLevel(root->right, level-1);
 	}
@@ -125,7 +131,7 @@ struct sll* printGivenLevel(struct node* root, int level)
 	//printf("%s head[%x]\n", __FUNCTION__, head); 
 		
 
-	return head;
+	return head1;
 }
 	
 		
