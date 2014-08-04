@@ -48,9 +48,39 @@ void printNthFromLast(struct node *head, int n)
 	
 }
 
+struct node *printNthFromLast2(struct node *head, int n)
+{
+
+	if(head == NULL || n < 1)
+		return NULL;
+
+	struct node *p1 = head;
+	struct node *p2 = head;
+
+	int i;
+
+	for(i = 0; i < n - 1; ++i) {
+		if(p2 == NULL) {
+			return NULL;
+		}
+		p2 = p2->next;
+	}
+
+	while(p2->next != NULL) {
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+
+	printf("Last[%d]th data: %d\n", n, p1->data);
+
+	return p1;
+	
+}
+
+
 int main()
 {
-	struct node *head = NULL;
+	struct node *head = NULL, *result = NULL;
 
 	push(&head, 20);
 	push(&head, 4);
@@ -59,6 +89,8 @@ int main()
 	push(&head, 28);
 
 	printNthFromLast(head, 4);
+	result = printNthFromLast2(head, 4);
+
 	getchar();
 
 	return 0;
