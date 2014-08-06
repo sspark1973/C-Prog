@@ -7,6 +7,7 @@ Eratosthenes's sieve 아라토스테네스의 체
 #include <stdio.h>
 //nclude <alloc.h>
 #include <stdlib.h>
+#include <string.h> // memset
 
 #define MAX 9999
 
@@ -18,7 +19,11 @@ void main(void)
 	printf("Enter a number :\n");
 	scanf("%d", &n);
 
-	iptr = (int*)calloc(n, sizeof(int)); //  찾아보자...
+	//iptr = (int*)calloc(n, sizeof(int)); //  찾아보자...
+	
+	iptr = (int *)malloc(n*sizeof(int));
+	memset(iptr, 0, n*sizeof(int));
+	
 
 	if(iptr == NULL) {
 		puts("\n Memory allocation error!");

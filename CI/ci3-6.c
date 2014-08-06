@@ -101,7 +101,7 @@ int main()
 
 	display(stack1);
 
-	peek(stack1);
+	//peek(stack1);
 
 	while(stack1) {
 		int tmp = pop(&stack1);

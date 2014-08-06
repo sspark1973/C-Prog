@@ -42,10 +42,29 @@ void printPowerSet(char *set, int set_size)
 
 }
 
+void printPowerSetInt(int *set, int set_size)
+{
+	unsigned int pow_set_size = pow(2, set_size);
+	printf("pow_set_size = %d \n", pow_set_size);
+
+	int counter, j;
+
+	for(counter=0; counter < pow_set_size; counter++) {
+		for(j=0; j < set_size; j++) {
+			if(counter & (1 << j))
+				printf("%d", set[j]);
+		}
+		printf("\n");
+	}
+
+}
+
 int main()
 {
 	char set[] = {'a', 'b', 'c'};
+	int setInt[] = {1, 2, 3};
 	printPowerSet(set, 3);
+	printPowerSetInt(setInt, 3);
 
 	getchar();
 	return 0;
