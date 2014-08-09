@@ -13,8 +13,11 @@ int is_prime(int n)
 	int i;
 
 	for ( i=2; i < n; i++) {
-		if(n % i == 0)
+		printf("[%d] % [%d] = %d\n", n, i, n%i);
+
+		if(n % i == 0) {
 			return !TRUE;
+		}
 	}
 
 	return TRUE;
