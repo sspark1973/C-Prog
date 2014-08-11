@@ -6,9 +6,9 @@ class Data
 {
 	T data;
 public:
-	Data(T d);
-	void SetData(T d);
-	T GetData();
+	Data(T d) : data(d) { }
+	void SetData(T d) { data = d; }
+	T GetData() { return data; }
 };
 /*
 Create Instance : Memory alloc -> Constructor...
@@ -17,6 +17,7 @@ Data d1(10);
 	- We can know T's type after calling constructor
 */
 
+#if 0
 template <typename T>
 Data<T>::Data(T d) {
 	data = d;
@@ -31,10 +32,12 @@ template <typename T>
 T Data<T>::GetData() {
 	return data;
 }
+#endif
 
 int main(void)
 {
 	Data<int> d1(0);
+	//Data d1(10); <- Compile error
 	d1.SetData(10);
 
 	Data<char> d2('a');
