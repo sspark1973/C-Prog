@@ -104,7 +104,7 @@ public:
 int main()
 {
 	InWords w;
-	//r(int i = 1; i < 999,999; i++);
+	//for(int i = 1; i <= 999,999; i++);
 	//cout << w.getWords(i) << endl;
 	cout << w.getWords(4) << endl;
 	cout << w.getWords(18) << endl;
@@ -113,7 +113,7 @@ int main()
 	cout << w.getWords(1024) << endl;
 	cout << w.getWords(51824) << endl;
 	cout << w.getWords(241724) << endl;
-	cout << w.getWords(999024) << endl;
+	cout << w.getWords(999999) << endl;
 }
 
 

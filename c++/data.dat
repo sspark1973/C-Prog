@@ -1,0 +1,9 @@
+OUTPUT:
+// Enter string (EOL = $) : Str is : first line
+// second line$
+// 
+// Read data from file
+// file: "data.dat"
+// second line
+// last line
+
