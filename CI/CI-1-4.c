@@ -69,7 +69,7 @@ bool8 areAnagramAdvance(char *str1, char *str2)
     count[str2[i]]--;
   }
   
-  if(str1[i] | str2[i])
+  if(str1[i] || str2[i])
     return FALSE;
     
   for(i=0; i < NO_OF_CHARS; i++)

@@ -17,6 +17,7 @@ bool8 isUniqueChar(char *str)
   int i;
   int len = strlen(str);  
   bool8 char_set[256] = {0};
+  //memset(char_set, 0, 256);
   
   for(i=0; i < len; i++)
   {
