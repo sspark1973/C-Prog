@@ -1,4 +1,7 @@
 /*
+  1.4 Write a method to decide if two strings are anagrams or not.
+
+
   http://www.geeksforgeeks.org/check-whether-two-strings-are-anagram-of-each-other/
   
   Count characters

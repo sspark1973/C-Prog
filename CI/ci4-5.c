@@ -119,7 +119,7 @@ struct node* inOrderSuccessor2(struct node* root, struct node* n)
 	while(root != NULL) {
 		if(n->data < root->data) {
 			succ = root;
-			root = root-> left;
+			root = root->left;
 		} else if (n->data > root->data) {
 			root = root->right;
 		} else

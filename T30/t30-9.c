@@ -35,7 +35,7 @@ int main()
 	scanf("%s", str);
 	length = strlen(str);
 
-	for(i=0; i < length; i++) {
+	for(i=0; i < length/2; i++) {
 		if(str[i] != str[length-i-1]) {
 			flag = 1;
 			break;

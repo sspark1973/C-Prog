@@ -1,3 +1,8 @@
+/*
+Number of consecutive integer in an arrary
+can be coded by C
+*/
+
 #include <iostream>
 
 using namespace std;

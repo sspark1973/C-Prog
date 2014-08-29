@@ -30,9 +30,8 @@ int main()
 
 	char *ptr;
 	if((ptr = (char *)malloc(0)) == NULL)
-		{}
-	else
 		puts("Got a null pointer");
+	else
 		puts("Got a valid pointer");
 
 	printf("\n");

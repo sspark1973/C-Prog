@@ -78,7 +78,7 @@ int main()
 	nb2.ShowNumber();
 	nb1.ShowNumber();
 
-	nb2 = ++nb1; // nb1.operator()
+	nb2 = ++nb1; // nb1.operator++()
 	nb2.ShowNumber();
 	nb1.ShowNumber();
 }

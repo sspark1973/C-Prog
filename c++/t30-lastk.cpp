@@ -50,8 +50,8 @@ void printLastKLines(ifstream &fin, int k) {
 	cout << "start : " << start << endl;
 
 	for (int i = 0; i < cnt; ++i) {
-		//cout << i << " " << line[(start+i)%k] << endl;
-		cout << i << " " << line[(start+i)] << endl;
+		cout << i << " " << line[(start+i)%k] << endl;
+		//cout << i << " " << line[(start+i)] << endl;
 
 	}
 }
@@ -59,7 +59,7 @@ void printLastKLines(ifstream &fin, int k) {
 int main() {
 	ifstream fin("13.1.in");
 
-	int k = 4;
+	int k = 2;
 	printLastKLines(fin, k);
 	fin.close();
 	return 0;

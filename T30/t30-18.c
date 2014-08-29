@@ -23,8 +23,9 @@ int main()
 	while(sample_chr != EOF) {
 		printf("%c", sample_chr);
 		if(sample_chr == '\n') {
-			printf("New Line\n");
 				no_lines++;
+				printf("New Line[%d]\n", no_lines);
+
 		}
 
 		sample_chr = getc(fp);

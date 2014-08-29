@@ -22,35 +22,14 @@ void display(int matrix[][5], int n) {
 		}
 		printf("\n");
 	}
-	printf("=====================================\n");
+
+	printf("\n===================================\n");
 }
 
 void rotate(int matrix[][5], int n){
 	int layer, i, j, rn=n, cn=n;
 	int row[5] = {0};
 	int col[5] = {0};
-
-	printf("\n=====================================\n");
-
-	for(i=0; i < rn; i++) {
-		for(j=0; j < cn; j++) {
-			printf("[%d][%d]=%d\t", i, j, matrix[i][j]);
-			if(matrix[i][j] == 0) {
-				row[i] = 1;
-				col[j] = 1;
-			}
-		}
-		printf("\n");
-	}
-	printf("\n=====================================\n");
-
-	for(i=0; i<rn; i++)
-		printf("%d\t", row[i]);
-	printf("\n=====================================\n");
-	for(i=0; i<cn; i++)
-		printf("%d\t", col[i]);
-	printf("\n=====================================\n");
-
 
 	for (layer=0; layer < n/2; layer++) {
 		int first = layer;
@@ -72,24 +51,6 @@ void rotate(int matrix[][5], int n){
 			matrix[i][last] = top; // RightTop <-saved LeftTop
 		}
 	}
-
-	for(i=0; i < rn; i++) {
-		for(j=0; j < cn; j++) {
-			if(matrix[rn][cn] == 0) {
-				row[i] = 1;
-				col[j] = 1;
-			}
-		}
-	}
-
-	for(i=0; i<rn; i++)
-		printf("%d\t", row[i]);
-	printf("\n=====================================\n");
-	for(i=0; i<cn; i++)
-		printf("%d\t", col[i]);
-	printf("\n=====================================\n");
-
-
 }
 
 void setZeros(int matrix[][5], int rn, int cn) {
@@ -112,10 +73,8 @@ void setZeros(int matrix[][5], int rn, int cn) {
 
 	for(i=0; i<rn; i++)
 		printf("%d\t", row[i]);
-	printf("\n=====================================\n");
 	for(i=0; i<cn; i++)
 		printf("%d\t", col[i]);
-	printf("\n=====================================\n");
 	
 
 	for(i=0; i < rn; i++) {
@@ -125,9 +84,6 @@ void setZeros(int matrix[][5], int rn, int cn) {
 			}
 		}
 	}
-
-	//free(row);
-	//free(col);
 }
 
 int main(int argc, char **argv)

@@ -19,9 +19,20 @@ Series is as follows
 */
 #include <stdio.h>
 
+//#if 0
+
+int fibo(int n)
+{
+	if(n == 0) return 0;
+	else if(n == 1) return 1;
+	else {
+		return fibo(n-1) + fibo(n-2);
+	}
+}
+
 int main()
 {
-	int i, fib[25];
+	int i, fib[30];
 
 	fib[0] = 0;
 	fib[1] = 1;
@@ -33,10 +44,40 @@ int main()
 	printf("The fibonacci series is as following \n");
 
 	for(i=0; i < 30; i++) {
-		printf("%d\n", fib[i]);
+		printf("fib[%d] = %d\n", i, fib[i]);
 	}
+
+	int n, result;
+
+	scanf("%d", &n);
+
+	result = fibo(n);
+
+	printf("fibo[%d] = %d\n", n, result);
+
 
 	return 0;
 }
+//#endif
+
+#if 0
+int fibo(int n)
+{
+	if(n == 0) return 0;
+	else if(n == 1) return 1;
+	else {
+		return fibo(n-1) + fibo(n-1);
+	}
+}
 
 	
+
+int main()
+{
+	int n, result;
+
+	scanf("%d", &n);
+
+	result = fibo(n);
+}
+#endif

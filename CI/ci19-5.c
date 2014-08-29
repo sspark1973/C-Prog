@@ -26,15 +26,17 @@ struct result estimate(char *guess, char *solution)
 	res.hits = 0;
 	res.pseudoHits = 0;
 
-	for(i = 0; i < 4; ++i) {
-		solution_mask |= 1 << (1 + solution[i] - 'A');
-		printf("mask[%#010x] math[%d]\n", solution_mask, (1 + solution[i] - 'A'));
+	for(i = 0; i < 8; ++i) {
+//		solution_mask |= 1 << (1 + solution[i] - 'A'); it's okay without '1 + '
+		solution_mask |= 1 << (solution[i] - 'A');
+		printf("mask[%#010x] math[%d] [%d]\n", solution_mask, (1 + solution[i] - 'A'), solution[i] - 'A');
 	}
 
-	for(i = 0; i < 4; ++i) {
+	for(i = 0; i < 8; ++i) {
 		if(guess[i] == solution[i]) {
 			++res.hits;
-		} else if ((solution_mask & ( 1 << (1 + guess[i] - 'A'))) >= 1) {
+//		} else if ((solution_mask & ( 1 << (1 + guess[i] - 'A'))) >= 1) {
+		} else if ((solution_mask & ( 1 << (guess[i] - 'A'))) >= 1) {
 			++res.pseudoHits;
 		}
 	}
@@ -48,8 +50,8 @@ struct result estimate(char *guess, char *solution)
 
 int main()
 {
-	char *solution = "RGGB";
-	char *guess = "YRGB";
+	char *solution = "RGGBABBA";
+	char *guess = "YRGBDBDA";
 	struct result res = estimate(guess, solution);
 
 	printf("Hits:%d PseudoHits:%d\n", res.hits, res.pseudoHits);
