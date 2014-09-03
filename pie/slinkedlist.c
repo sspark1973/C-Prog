@@ -192,7 +192,44 @@ IntElement *findMToLastElement(IntElement *head, int m)
 
 	return mBehind;
 }
-	
+
+/* Takes a pointer to the head of a linked list and determines if
+* the list ends in a cycle or is NULL terminated
+*/
+bool determineTermination(IntElement *head)
+{
+/*
+	IntElement *fast, *slow;
+	slow = head;
+	fast = head->next;
+
+	while(true) {
+		if(!fast || !fast->next)
+			return false;
+		else if(fast == slow || fast->next == slow)
+			return true;
+		else {
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+	}
+*/
+	IntElement *fast, *slow;
+	fast = head;
+	slow = head;
+
+	while(slow && fast && fast->next) {
+		slow = slow->next;
+		fast = fast->next->next;
+
+		if(slow == fast) {
+			printf("Found Loop Data[%d], [%d]\n", slow->data, fast->data);
+			return true;
+		}
+	}
+	return false;
+}
+
 int main()
 {
 	return 0;
