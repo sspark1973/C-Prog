@@ -70,6 +70,7 @@ void postOrderTraversal(Node *root) {
 	printf("%d\t", root->data);
 }
 
+// Page 73
 Node *findLowestCommonAncestor(Node *root, int value1, int value2) {
 	while(root != NULL) {
 		int value = root->data;
@@ -83,6 +84,27 @@ Node *findLowestCommonAncestor(Node *root, int value1, int value2) {
 		}
 	}
 	return NULL;
+}
+
+int traverse(Node *node, int count, Node arr[]) {
+	if(node == NULL)
+		return count;
+	if(arr != NULL)
+		arr[count] = *node;
+	count++;
+	count = traverse(node->left, count, arr);
+	count = traverse(node->right, count, arr);
+	return count;
+}
+
+#define SIZE_ARRAY 7
+
+Node* heapifyBinaryTree(Node *root) {
+	int size = traverse(root, 0, NULL);
+	Node nodeArray[SIZE_ARRAY] = {0};
+	traverse(root, 0, nodeArray);
+
+	return nodeArray;
 }
 
 Node *newNode(int value) {
@@ -121,6 +143,12 @@ int main()
 
 	Node *anNode = findLowestCommonAncestor(root, 4, 14);
 	printf("findLowestCommonAncestor 4 and 14 is : %d\n", anNode->data);
+
+	int count = traverse(root, 0, NULL);
+	printf("traverse count = %d\n", count);
+
+	Node *newRoot = heapifyBinaryTree(root);
+		
 
 	return 0;
 }

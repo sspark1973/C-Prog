@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "type_def.h"
 #include "util.h"
 
 #define MAX_STRING_LENGTH 19
 
-uint32 atoi(char *input)
+uint32 atoi_p(char *input)
 {
   uint32 len = string_len(input);
   uint32 result = 0;
@@ -143,6 +144,35 @@ char *string_concat(char *dst, char *src)
 	return fdst;
 }
 
+char *string_concat2(char *s1, char *s2)
+{
+	if(s1 == '\0' || s2 == '\0')
+		return NULL;
+
+	int s1_len = strlen(s1);
+	int s2_len = strlen(s2);
+
+	char *fdst = (char *)malloc(sizeof(s1_len + s2_len + 1));
+
+	int i, j;
+	for(i = 0; i < s1_len; i++) {
+		fdst[i] = *(s1 + i);
+	}
+
+	printf("s1_len[%d] i[%d]\n", s1_len, i);
+
+	for(j = 0; j < s2_len; j++) {
+		fdst[s1_len + j] = *(s2 + j);
+	}
+
+	fdst[s1_len + s2_len] = '\0';
+
+	printf("s2_len[%d] j[%d] fdst[%s]\n", s2_len, j, fdst);
+	
+	return fdst;
+}
+
+
 uint32 string_len(char *input)
 {
   uint32 len = 0;
@@ -159,12 +189,39 @@ uint32 string_len(char *input)
   }
 }
 
+/*
+You can also implement using function instead of macro, 
+but function implementation cannot be done in C 
+as C doesn¡¯t support function overloading and sizeof() is supposed to receive parameters of all data types.
+*/
+
+#define my_sizeof(type) (char *)(&type + 1) - (char *)(&type)
+#define my_sizeof2(X) \
+({\
+__typeof(X) x; \
+(char *)(&x + 1) - (char *)(&x); \
+})
+
+#define MYSIZEOF(X) ((X *)0 + 1)
+
 int main(void)
 {
 	char dest[10] = "one";
 	char src[10] = "two";
 
 	printf("%s\t\n", string_concat(dest, src));
+
+	printf("%s\t\n", string_concat2(dest, src));
+
+	double x;
+	printf("my sizeof x = %d\n", my_sizeof(x));
+	printf("my sizeof2 double = %d\n", my_sizeof2(double));
+	//printf("MYSIZEOF x = %d\n", MYSIZEOF(x));
+	printf("MYSIZEOF double = %d\n", MYSIZEOF(double));
+
+	printf("&x + 1 = %x, &x = %x\n", (char *)(&x + 1), (char *)&x);
+	printf("&x + 1 = %x, &x = %x\n", (int *)(&x + 1), (int *)&x);
+
 	
 	return 0;
 }

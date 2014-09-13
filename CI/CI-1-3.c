@@ -16,7 +16,10 @@ Time complexity is O(N2).
 
 #include <stdio.h>
 #include <string.h>
-#include "type_def.h"
+#include <stdbool.h>
+#include <stdlib.h>
+
+//#include "type_def.h"
 
 void removeDuplicates(char *str)
 {
@@ -45,8 +48,37 @@ void removeDuplicates(char *str)
 	printf("%s str=%s\n", __FUNCTION__, str);
 }
 
-main() {
-	char str[] = "aaabbb";
+char *removeChars(char *str, char *remove) {
+	int src, dst = 0;
+	bool flags[128] = {0};
 
+	int str_len = strlen(str);
+
+	char *dstr = (char *)malloc(str_len + 1);
+
+	for(src = 0; src < strlen(remove); ++src) {
+		flags[remove[src]] = true;
+	}
+
+	for(src = 0; src < str_len; ++src) {
+		if(!flags[str[src]]) {
+			dstr[dst++] = str[src];
+		}
+	}
+	dstr[dst] = '\0';
+
+	return dstr;
+}
+	
+
+main() {
+	char str[] = "acaabcbbdd";
+	char str2[] = "Battle of the Vowels: Hawaii vs. Grozny";
+	char remove[] = "aeiou";
+
+	char *dstr = removeChars(str2, remove);
+	printf("str[%s] dstr[%s]\n", str2, dstr);
+
+	free(dstr);
 	removeDuplicates(str);
 }
