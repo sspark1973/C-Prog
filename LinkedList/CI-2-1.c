@@ -78,10 +78,10 @@ int main()
 	push(&start, 10);
 	push(&start, 11);
 	push(&start, 12);
-	push(&start, 11);
-	push(&start, 11);
-	push(&start, 12);
-	push(&start, 10);
+	push(&start, 13);
+	push(&start, 14);
+	push(&start, 15);
+	push(&start, 16);
 
 	printList(start);
 

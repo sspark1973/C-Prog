@@ -64,7 +64,7 @@ void setZeros(int matrix[][5], int rn, int cn) {
 
 	for(i=0; i < rn; i++) {
 		for(j=0; j < cn; j++) {
-			if(matrix[rn][cn] == 0) {
+			if(matrix[i][j] == 0) {
 				row[i] = 1;
 				col[j] = 1;
 			}

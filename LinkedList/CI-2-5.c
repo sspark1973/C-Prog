@@ -22,7 +22,7 @@ void push(struct node **head, int data)
 	new_node->data = data;
 	new_node->next = (*head);
 	(*head) = new_node;
-	printf("%d\t %d\t\n", new_node->data, (*head)->next);
+	printf("%d\t %#x\t\n", new_node->data, new_node);
 }
 
 void displayList(struct node *head)
@@ -32,7 +32,7 @@ void displayList(struct node *head)
 	while(temp != NULL) {
 		printf("%d\t", temp->data);
 		temp = temp->next;
-		getchar();
+		//getchar();
 	}
 
 	printf("\n");
@@ -56,6 +56,7 @@ void removeLoop(struct node *loop_node, struct node *head)
 		else
 			ptr1 = ptr1->next;
 	}
+	printf("removeLoop data[%d]\n", ptr2->data);
 	ptr2->next = NULL;
 }
 
@@ -110,14 +111,28 @@ struct node *FindBeginning(struct node *head)
 	if(n2->next == NULL)
 		return NULL;
 
+	printf("FindBeginning data[%d]\n", n2->data);
+
+	struct node *loop_node = n2;
 	n1 = head;
 
+	while(1) {
+		while(n2->next != loop_node && n2 != n1) {
+			n2 = n2->next;
+		}
+
+		if(n2 == n1)
+			break;
+		else
+			n1 = n1->next;
+	}
+
+#if 0
 	while(n1 != n2) {
 		n1 = n1->next;
 		n2 = n2->next;
 	}
-
-	
+#endif	
 
 	return n2;
 }
@@ -143,7 +158,9 @@ int main(int argc, char **argv)
 
 	node_ptr = FindBeginning(head);
 
-	displayList(node_ptr);
+	printf("begin circle data[%d]\n", node_ptr->data);
+
+	//displayList(node_ptr);
 
 	detectAndRemoveLoop(head);
 

@@ -63,19 +63,23 @@ struct node *addTwoLists(struct node *first, struct node *second, int carry)
 		sum = sum % 10;
 		temp = newNode(sum);
 
-		if(res == NULL)
+		if(res == NULL) {
 			res = temp;
+			prev = res;
+		}
 		else
+			//res->next = temp;
 			prev->next = temp;
 
 		prev = temp;
+		//res = temp;
 
 		if(first) first = first->next;
 		if(second) second = second->next;
 	}
 
 	if(carry > 0)
-		temp->next = newNode(carry);
+		prev->next = newNode(carry);
 
 	return res;
 }

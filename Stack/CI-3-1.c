@@ -28,15 +28,25 @@ int buffer[SINGLE_STACK_SIZE * 3];
 
 int stackPointer[] = {-1, -1, -1};
 
-void push(int stackNum, int value) 
+int push(int stackNum, int value) 
 {
+	if(stackPointer[stackNum] == stackSize -1) {
+		printf("Stack is Full!!\n");
+		return -1;
+	}
 	int index = stackNum * stackSize + stackPointer[stackNum] + 1;
 	stackPointer[stackNum]++;
 	buffer[index] = value;
+
+	return stackPointer[stackNum];
 }
 
 int pop(int stackNum)
 {
+	if(stackPointer[stackNum] == -1) {
+		printf("Stack is Empty!!!");
+		return -1;
+	}
 	int index = stackNum * stackSize + stackPointer[stackNum];
 	stackPointer[stackNum]--;
 	int value = buffer[index];
@@ -63,7 +73,6 @@ int main(int argc, char **argv)
 	for(i=0; i < sizeof(stackPointer)/sizeof(stackPointer[0]) ; i++) {
 		printf("stack[%d] is Empty [%d]\n", i, isEmpty(i));
 	}
-		
-	
+
 	return 0;
 }

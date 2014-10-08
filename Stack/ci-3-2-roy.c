@@ -7,15 +7,20 @@ Push, pop and min should all operate in O(1) time
 #include <stdio.h>
 #include <stdbool.h>
 
+#define MAX_ELEM 100
 
-int max = 100;
-int arr[100] = {0}; // ¿Ö arr[max]´Â ¿¡·¯°¡ ³ª´Âå°Éå±î?
-int arrMin[100] = {0};
+typedef struct _stack {
+	int arr[MAX_ELEM];
+	int top;
+} stack;
+
+int arr[MAX_ELEM] = {0}; // ¿Ö arr[max]´Â ¿¡·¯°¡ ³ª´Âå°Éå±î?
+int arrMin[MAX_ELEM] = {0};
 
 
 int top = -1;
 int topMin = -1;
-int MinNum = 0;
+//int MinNum = 0;
 
 //#define TRUE 1
 //#define FALSE 0
@@ -30,7 +35,7 @@ bool isEmpty()
 
 bool isFull()
 {
-	if(top == max -1)
+	if(top == MAX_ELEM -1)
 		return true;
 	return false;
 }
@@ -46,27 +51,26 @@ void push(int x)
 		top++; topMin++;
 		arr[top] = x;
 		arrMin[topMin] = x;
-		//MinNum = x;
 	} else {
 		top++;
 		arr[top] = x;
 
-		int y = popMin();
+		int y = peekMin();
+		int minNum;
+
+		if(y > x)
+			minNum = x;
+		else
+			minNum = y;
 		
-		if(MinNum > x) {
-			MinNum = x;
-		}
+		topMin++;
+		arrMin[topMin] = minNum;
 		//printf("\n Min Number is %d\n", MinNum);
 	}
 
 }
 
-int getMin()
-{
-	return MinNum;
-}
-
-int popMin()
+int peekMin()
 {
 	int x;
 	
@@ -76,12 +80,13 @@ int popMin()
 	//}
 
 	x = arrMin[topMin];
-	topMin--;
+	return x;
+	//topMin--;
 }
 
 int pop()
 {
-	int x;
+	int x, y;
 	
 	if(isEmpty()) {
 		printf("Stack is Empty\n");
@@ -90,6 +95,11 @@ int pop()
 
 	x = arr[top];
 	top--;
+
+	y = arrMin[topMin];
+	topMin--;
+
+	return x;
 }
 
 void displayStack()
@@ -99,18 +109,30 @@ void displayStack()
 		printf("%d\t", arr[i]);
 	}
 	printf("\n Top is %d\n", top);
-	printf("\n Min Number is %d\n", MinNum);
+	//printf("\n Min Number is %d\n", MinNum);
 
 }
 
 int main()
 {
 	push(10);
+
+	printf("Min [%d]\n", peekMin()); 
 	push(20);
 	push(30);
 	push(40);
 
-	displayStack();
+	push(20);
+	push(5);
+	printf("Min [%d]\n", peekMin());
+
+	push(30);
+	push(10);
+	printf("Min [%d]\n", peekMin());
+	pop();
+	pop();
+	pop();
+	printf("Min [%d]\n", peekMin());
 
 	
 	return 0;

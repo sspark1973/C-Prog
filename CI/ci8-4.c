@@ -4,6 +4,9 @@ A permutation, also called an ¡°arrangement number¡± or ¡°order,¡±
 is a rearrangement of the elements of an ordered list S 
 into a one-to-one correspondence with S itself. 
 
+http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+
+
 A STRING of length n has n! permutation.
 Source: Mathword(http://mathworld.wolfram.com/Permutation.html)
 
@@ -39,7 +42,7 @@ void permute(char *a, int i, int n)
 			//printf("i[%d] j[%d] \n", i, j);
 			permute(a, i+1, n);
 			//printf("i[%d] j[%d] \n", i, j);
-			swap((a+i), (a+j));
+			//swap((a+i), (a+j));
 			//printf("i[%d] j[%d] \n\n", i, j);
 		}
 	}
