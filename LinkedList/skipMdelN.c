@@ -38,24 +38,24 @@ void skipMdelN(node **head, int m, int n) {
 	node *t;
 
 	while(curr) {
-	for (i=1; i < m && curr != NULL; ++i) {
-		curr = curr->next;
-	}
+		for (i=1; i < m && curr != NULL; ++i) {
+			curr = curr->next;
+		}
 
-	if(curr == NULL) {
-		return;
-	}
+		if(curr == NULL) {
+			return;
+		}
 
-	t = curr->next;
+		t = curr->next;
 
-	for (j = 1; j <= n && t != NULL; ++j) {
-		node *tmp = t;
-		t = t->next;
-		free(tmp);
-	}
+		for (j = 1; j <= n && t != NULL; ++j) {
+			node *tmp = t;
+			t = t->next;
+			free(tmp);
+		}
 
-	curr->next = t;
-	curr = t;
+		curr->next = t;
+		curr = t;
 	}
 }
 	

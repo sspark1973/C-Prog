@@ -30,10 +30,12 @@ node *newNode(int data)
 void printLeftBoundary(node *root)
 {
 	if(root == NULL) return;
-	if(root->left) {
+//	if(root->left) {
+	if(root) {		
 		printf("%d ", root->data);
 		printLeftBoundary(root->left);
-	} else if(root->right) {
+//	} else if(root->right) {
+	} else if(root) {
 		printf("%d ", root->data);
 		printLeftBoundary(root->right);
 	}
@@ -56,10 +58,12 @@ void printRightBoundary(node *root)
 	if(root == NULL)
 		return;
 
-	if(root->right) {
+//	if(root->right) {
+	if(root) {
 		printRightBoundary(root->right);
 		printf("%d ", root->data);
-	} else if(root->left) {
+//	} else if(root->left) {
+	} else if(root) {
 		printRightBoundary(root->left);
 		printf("%d ", root->data);
 	}
@@ -69,24 +73,37 @@ void printBoundary(node *root)
 {
 	if(root) {
 		printf("%d ", root->data);
+		printf("\nLeft\n");
 		printLeftBoundary(root->left);
+		printf("\nLeaf\n");
 		printLeafBoundary(root);
+		printf("\nRight\n");
 		printRightBoundary(root->right);
 	}
 }
 
+/*
+		1
+	 /	   \
+    2		3
+ /	 \	   /  \
+4	  5   6    7 
+                 \
+                  8
+
+*/
+
+
 int main()
 {
-	node *root = newNode(1000);
-	root->left = newNode(500);
-	root->right = newNode(1500);
-	root->left->right = newNode(510);
-	root->left->right->right = newNode(600);
-	root->left->left = newNode(240);
-	root->left->left->left = newNode(120);
-	root->left->left->right = newNode(300);
-	root->right->left = newNode(1300);
-	root->right->left->right = newNode(1320);
+	node *root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->right->left = newNode(6);
+    root->right->right = newNode(7);
+    root->right->right->right = newNode(8);
 
 	printBoundary(root);
 

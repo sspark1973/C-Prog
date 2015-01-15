@@ -60,7 +60,7 @@ struct node *Add2(struct node *p1, struct node *p2, int carry, int state)
 	push(&ret, 0);
 
 	if(state > 0) {
-		ret->data = carry + p2->data;
+		ret->data = carry + p1->data;
 		carry = ret->data / 10;
 		ret->data %= 10;
 		ret->next = Add2(p1->next, p2, carry, state-1);

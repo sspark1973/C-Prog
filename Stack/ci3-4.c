@@ -29,7 +29,7 @@ typedef struct {
 void initStack(STACK *S, int n);
 int pop(STACK *S);
 void push(STACK *s, int x);
-void hanoi(int n, STACK* from, STACK *to, STACK *use);
+void hanoi(int n, STACK* from, STACK *by, STACK *to);
 void printStack(STACK S);
 
 STACK S1, S2, S3;
@@ -59,7 +59,7 @@ void push(STACK *S, int x)
 	S->A[S->top] = x;
 }
 
-void hanoi(int n, STACK* from, STACK *to, STACK *use)
+void hanoi(int n, STACK* from, STACK *by, STACK *to)
 {
 	int x;
 	
@@ -71,10 +71,10 @@ void hanoi(int n, STACK* from, STACK *to, STACK *use)
 	}
 
 	if(n > 1) {
-		hanoi(n-1, from, use, to);
+		hanoi(n-1, from, to, by);
 		x = pop(from); push(to, x);
 		printStack(S1);printStack(S2);printStack(S3);printf("\n");
-		hanoi(n-1, use, to, from);
+		hanoi(n-1, by, from, to);
 	}
 }
 
@@ -122,7 +122,7 @@ int main(int argc, char **argv)
 	initStack(&S3, n);
 
 	printStack(S1);printStack(S2);printStack(S3);printf("\n");
-	hanoi(n, &S1, &S3, &S2);
+	hanoi(n, &S1, &S2, &S3);
 
 	getchar();
 	return 0;

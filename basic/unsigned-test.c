@@ -8,4 +8,6 @@ int main()
 	(a + b > 6) ? puts(">6") : puts("<= 6");
 
 	printf("\n");
+
+	return 0;
 }

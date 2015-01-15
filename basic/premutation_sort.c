@@ -44,7 +44,7 @@ int *permutation_sort(int x[], int a[], int size)
 		printf("loop[%d] ", loop++);
 		display(x, size);
 	  }
-	  x[c] = valueToMove;
+	  //x[c] = valueToMove;
    }
 
    for(c=0; c < size; c++) {

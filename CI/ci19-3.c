@@ -7,6 +7,9 @@ and 24 has no trailing zeros since it does not end with any zeros at all.
 */
 
 /*
+
+http://www.geeksforgeeks.org/count-trailing-zeroes-factorial-number/
+
 SOLUTION
 Trailing zeros are contributed by pairs of 5 and 2, because 5*2 = 10. 
 
@@ -50,12 +53,12 @@ int factorial(int num)
 	if(num < 0) {
 		printf("Factorial is not defined for < 0");
 		return 0;
-	} else if(num == 0)
-		return 0;
-	else if(num == 1)
-		return 1;
+	} 
 
-	return num * factorial(num - 1);
+	if(num == 1)
+		return 1;
+	else
+		return num * factorial(num - 1);
 }
 
 int main()

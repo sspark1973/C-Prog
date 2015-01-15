@@ -101,13 +101,14 @@ bool isBalanced2(struct node *root, int *height)
 
 int main()
 {
-	struct node *root = newNode(1);
+	struct node *root = newNode(8);
 	int height = 0;
 	root->left = newNode(2);
-	root->right = newNode(3);
-	root->left->left = newNode(4);
-	root->left->right = newNode(5);
-	root->left->left->left = newNode(8);
+	root->right = newNode(10);
+	root->left->right = newNode(4);
+	root->left->left = newNode(3);
+	root->left->right->right = newNode(7);
+	root->right->left = newNode(9);
 
 	if(isBalanced2(root, &height))
 		printf("Tree is balanced\n");

@@ -20,12 +20,7 @@ With these constraints, we are left with no other choice but to divide equally 1
 
 #define SINGLE_STACK_SIZE 300
 
-const int stackSize = 300;
-int buffer_size = 900;
-//int* buf = new int[stackSize * 3];
 int buffer[SINGLE_STACK_SIZE * 3];
-// int buffer[stackSize * 3]; - Compile Error
-
 int stackPointer[] = {-1, -1, -1};
 
 int push(int stackNum, int value) 
@@ -73,6 +68,17 @@ int main(int argc, char **argv)
 	for(i=0; i < sizeof(stackPointer)/sizeof(stackPointer[0]) ; i++) {
 		printf("stack[%d] is Empty [%d]\n", i, isEmpty(i));
 	}
+
+	push( 1, 5 );
+	push( 1, 6 );
+	push( 0, 100 );
+	push( 1, 7 );
+	pop( 0 );
+	pop( 0 );
+	pop( 1 );
+	peek( 1 );
+	pop( 1 );
+	pop( 1 );
 
 	return 0;
 }

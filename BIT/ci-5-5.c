@@ -1,7 +1,13 @@
 /*
 5 5 Write a function to determine 
 the number of bits required to convert integer A to integer B 
-Input: 31, 14 Output: 2
+
+Input: 31, 14 
+
+31 : 0x11111
+14 : 0x01110
+
+Output: 2
 */
 
 /*
@@ -24,9 +30,16 @@ int bitSwapRequired(int a, int b)
 	int c, count = 0;
 
 	printf("[a^b]=[%x]\n", a^b);
+	int d = a ^ b;
+	
 	for( c = a ^ b; c != 0; c = c >> 1) {
 		count += c & 1;
 	}
+
+	for(count = 0 ; d; count++) {
+		d &= (d - 1);
+	}
+	
 	return count;
 }
 

@@ -51,7 +51,15 @@ int updateBits(int n, int m, int i, int j)
 	int right = ((1 << i) - 1);
 	int mask = left | right;
 
-	return (n & mask) | (m << i);
+	int res = (n & mask) | (m << i);
+
+	int mask2 = ((1 << (j - i) + 1) - 1) << i;
+
+	int res2 = (n & ~mask2) | (m << i);
+
+	printf("res[%#x] res2[%#x]\n", res, res2);
+
+	return res;
 }
 
 int main()

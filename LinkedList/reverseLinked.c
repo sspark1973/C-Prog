@@ -2,6 +2,13 @@
 Write a function to reverse a linked list
 Iterative Method
 Iterate trough the linked list. In loop, change next to prev, prev to current and current to next.
+
+http://www.geeksforgeeks.org/write-a-function-to-reverse-the-nodes-of-a-linked-list/
+
+Try : 
+http://www.careercup.com/question?id=14684669
+
+
 */
 
 #include <stdio.h>
@@ -68,4 +75,3 @@ int main()
 
 	return 0;
 }
-

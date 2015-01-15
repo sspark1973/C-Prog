@@ -109,7 +109,7 @@ void push(struct sll **head_ref, int data)
 
 	//printList(*(head_ref));
 }		
-struct sll* printGivenLevel(struct node* root, int level)
+struct sll* printGivenLevel2(struct node* root, int level)
 {
 	static struct sll *head1 = NULL;
 	static struct sll *head2 = NULL;
@@ -124,8 +124,8 @@ struct sll* printGivenLevel(struct node* root, int level)
 		push(&head1, root->data);
 	} else if(level > 1) {
 		
-		printGivenLevel(root->left, level-1);
-		printGivenLevel(root->right, level-1);
+		printGivenLevel2(root->left, level-1);
+		printGivenLevel2(root->right, level-1);
 	}
 
 	//printf("%s head[%x]\n", __FUNCTION__, head); 
@@ -133,8 +133,25 @@ struct sll* printGivenLevel(struct node* root, int level)
 
 	return head1;
 }
-	
-		
+
+/* 
+http://www.geeksforgeeks.org/level-order-tree-traversal/
+*/
+void printGivenLevel(struct node* root, int level)
+{
+	if(root == NULL)
+		return;
+
+	if(level == 1) {
+		printf("%d\t", root->data);
+	} else if(level > 1) {
+		printGivenLevel(root->left, level-1);
+		printGivenLevel(root->right, level-1);
+	}
+
+	return;
+}
+
 void printLevelOrder(struct node* root)
 {
 	struct sll *head = NULL;
@@ -145,7 +162,8 @@ void printLevelOrder(struct node* root)
 	printf("height[%d]\n", h);
 
 	for(i=1; i <= h; i++)
-		head = printGivenLevel(root, i);
+		//head = printGivenLevel(root, i);
+		printGivenLevel(root, i);
 
 	
 	printf("printLevelOrder head[%x]\n", head);

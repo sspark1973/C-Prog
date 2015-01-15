@@ -6,6 +6,9 @@ Input: {2, -8, 3, -2, 4, -10}
 Output: 5 (i.e., {3, -2, 4} )
 
 SOLUTION
+
+http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+
 A simple linear algorithm will work by keeping track of the current subsequence sum. 
 If that sum ever drops below zero, 
 that subsequence will not contribute to the subsequent maximal subsequence since it would reduce it by adding the negative sum.
@@ -35,18 +38,27 @@ This is a great thing to discuss with your interviewer to show how careful you a
 
 #include <stdio.h>
 
-int input[] = { 2, -8, 3, -2, 4, -10 }; 
+#define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
+#define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
+
+
+
+//int a[] = { 2, -8, 3, -2, 4, -10 }; 
+//int a[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+int a[]={-3,-2,-1,-4,-5,-6};
+
 
 int getMaxSum(int input[])
 {
 	int maxsum = 0;
 	int sum = 0, i;
+	int n = sizeof(a)/sizeof(a[0]);
 
-	printf("nmber of array[%d]\n", sizeof(input)/sizeof(input[0]));
+	printf("nmber of array[%d]\n", n);
 
 	//for(i = 0; i < sizeof(input)/sizeof(input[0]); ++i) {
-	for(i = 0; i < 6; ++i) {
-		sum += input[i];
+	for(i = 0; i < n; ++i) {
+		sum += a[i];
 
 		if(maxsum < sum) {
 			maxsum = sum;
@@ -57,12 +69,33 @@ int getMaxSum(int input[])
 	return maxsum;
 }
 
+int getMaxSum2(int input[])
+{
+	int maxsum = 0;
+	int sum = 0, i;
+
+	int n = sizeof(a)/sizeof(a[0]);
+
+	maxsum = a[0];
+	sum = a[0];
+
+	//for(i = 0; i < sizeof(input)/sizeof(input[0]); ++i) {
+	for(i = 0; i < n; ++i) {
+		sum = MAX(a[i], sum + a[i]);
+		maxsum = MAX(maxsum, sum);
+	}
+	return maxsum;
+}
+
 int main()
 {
-	int imax = 0;
+	int imax = 0, imax2 = 0;
 
-	imax = getMaxSum(input);
+	imax = getMaxSum(a);
 	printf("the largest sum[%d]\n", imax);
+
+	imax2 = getMaxSum2(a);
+	printf("the largest sum2[%d]\n", imax2);
 
 	return 0;
 }
