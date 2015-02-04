@@ -1,5 +1,6 @@
 /*
-Given a sequence of non-negative integers find a subsequence of length 3 having maximum product with the numbers of the subsequence being in ascending order. 
+Given a sequence of non-negative integers find a subsequence of length 3 having maximum product 
+with the numbers of the subsequence being in ascending order. 
 Example: 
 Input: 6 7 8 1 2 3 9 10 
 Ouput: 8 9 10

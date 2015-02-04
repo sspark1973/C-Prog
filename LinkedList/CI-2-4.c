@@ -72,6 +72,7 @@ struct node *addTwoLists(struct node *first, struct node *second, int carry)
 			prev->next = temp;
 
 		prev = temp;
+		//temp = prev; <-- Wrong
 		//res = temp;
 
 		if(first) first = first->next;
@@ -100,8 +101,9 @@ struct node *addTwoLists2(struct node *first, struct node *second, int carry)
 	struct node *more = NULL;
 	int sum;
 
-	if(first == NULL && second == NULL)
+	if(first == NULL && second == NULL && !carry) {
 		return NULL;
+	}
 
 	res = (struct node *)malloc(sizeof(struct node));
 	
@@ -124,17 +126,19 @@ int main(int argc, char **argv)
 	struct node *res = NULL, *res2 = NULL, *res3 = NULL;
 	int carry = 0;
 
-	push(&head1, 6);
-	push(&head1, 4);
-	push(&head1, 9);
+	push(&head1, 7);
 	push(&head1, 5);
-	push(&head1, 7);	
+	push(&head1, 9);
+	//push(&head1, 5);
+	//push(&head1, 7);	
 	// 7->5->9->4->6
 	displayList(head1);
 	
 
 	push(&head2, 4);
 	push(&head2, 8);
+	push(&head2, 9);
+
 	// 8->4
 	displayList(head2);
 

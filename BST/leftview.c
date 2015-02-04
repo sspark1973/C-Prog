@@ -62,7 +62,7 @@ void leftViewUtil(struct node *root, int level, int *max_level)
  
     // Recur for left and right subtrees
     leftViewUtil(root->left, level+1, max_level);
-	printf("\nlevel=%d max=%d\n", level, *max_level);
+	//printf("\nlevel=%d max=%d\n", level, *max_level);
     leftViewUtil(root->right, level+1, max_level);
 }
 

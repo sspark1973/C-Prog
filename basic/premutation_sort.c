@@ -54,11 +54,33 @@ int *permutation_sort(int x[], int a[], int size)
    return a;
 }
 
+int *permutation_sort2(int x[], int a[], int size)
+{
+   int c;
+   for(c=0; c<size; c++) {
+      int goingTo = a[c] - 1;
+	  int valueToMove = x[c];
+
+	  x[c] = x[goingTo];
+	  x[goingTo] = valueToMove;
+   }
+
+   for(c=0; c < size; c++) {
+   	  a[c] = abs(a[c]);
+   }
+
+   return a;
+}
+
 int main()
 {
    int x[] = {5, 12, 14, 27, 3, 2, 13, 17, 7, 21};
    int a[] = {4, 7, 3, 10, 8, 2, 5, 9, 6, 1};
+   int x2[] = {5, 12, 14, 27, 3, 2, 13, 17, 7, 21};
+   int a2[] = {4, 7, 3, 10, 8, 2, 5, 9, 6, 1};
+
    int *result, i;
+
 
    int size = sizeof(x)/sizeof(x[0]);
 
@@ -69,6 +91,16 @@ int main()
    for(i=0; i<size; ++i) {
    	  printf("%d\t", result[i]);
    }
+
+   printf("\n second \n");
+
+
+   result = permutation_sort2(x2, a2, size);
+
+   for(i=0; i<size; ++i) {
+   	  printf("%d\t", result[i]);
+   }
+
    printf("\n");
 
    return 0;

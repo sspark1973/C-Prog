@@ -4,7 +4,7 @@ using namespace std;
 
 // function template
 
-template <typename T> // template definition
+template <typename T> // template definition == <class T>
 void ShowData(T a, T b)
 {
 	cout << a << endl;
